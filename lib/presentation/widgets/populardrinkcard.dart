@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hollycoffee/core/apptheme/appcolors.dart';
 import 'package:hollycoffee/core/apptheme/apptheme.dart';
-import 'package:hollycoffee/presentation/others/populardrinkmodel.dart';
+import 'package:hollycoffee/models/populardrinkmodel.dart';
 class Populardrinkcard extends StatelessWidget {
   final Populardrinkmodel categorycard;
   const Populardrinkcard({super.key,required this.categorycard});

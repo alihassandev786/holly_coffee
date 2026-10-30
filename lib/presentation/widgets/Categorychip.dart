@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hollycoffee/core/apptheme/appcolors.dart';
 import 'package:hollycoffee/core/apptheme/apptheme.dart';
-import 'package:hollycoffee/presentation/others/categorychipmodel.dart';
+import 'package:hollycoffee/models/categorychipmodel.dart';
 class Categorychip extends StatelessWidget {
   final Categorychipmodel category;
 

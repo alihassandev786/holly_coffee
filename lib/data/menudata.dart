@@ -1,6 +1,6 @@
 import 'package:hollycoffee/core/constants/appimages.dart';
-import 'package:hollycoffee/presentation/others/populardrinkmodel.dart';
-import 'package:hollycoffee/presentation/others/categorychipmodel.dart';
+import 'package:hollycoffee/models/populardrinkmodel.dart';
+import 'package:hollycoffee/models/categorychipmodel.dart';
 
 class Menudata {
   static const List<Categorychipmodel> categories = [
