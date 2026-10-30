@@ -18,4 +18,13 @@ class Appstring {
   static const String populardrinkstitle = "Popular Drinks";
   static const String popularcoffeename = "Cold Brew of the Saints";
   static const String populardrinksprice = "\$ 4.99";
+  static const String hintText = "Search category...";
+  static const String rewards = "Rewards";
+  static const String rewardpoint = "Reward Points";
+  static const String availablevoucher = "Available Voucher";
+  static const String voucherdiscryption = "20%off to your next order";
+  static const String apply = "Apply";
+  static const String activitychip = "Activity";
+  static const String howtoearnchip = "How to earn";
+  static const String profile = "Profile";
 }

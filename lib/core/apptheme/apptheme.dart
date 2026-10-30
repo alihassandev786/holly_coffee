@@ -23,6 +23,7 @@ class Apptheme {
       fontFamily: GoogleFonts.montserrat().fontFamily,
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.symmetric(vertical: myPadding/2,),
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.bgcolor,
           minimumSize: Size(myPadding / 1, myPadding / 25),
@@ -60,6 +61,32 @@ class Apptheme {
         elevation: 10,
         type: BottomNavigationBarType.fixed,
       ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+      fillColor: const Color(0xFFF3F3F3),
+      hintStyle: TextStyle(
+        color: Colors.grey,
+        fontSize: myPadding/1,
+      ),
+      contentPadding: EdgeInsets.symmetric(horizontal: myPadding/1,vertical: myPadding/1.2),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+        borderSide: BorderSide.none,
+      ),
+
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+        borderSide: BorderSide.none,
+      ),
+
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+        borderSide: const BorderSide(
+          color: AppColors.primary,
+          width: 1.5,
+        ),
+      ),
+      )
     );
   }
 }

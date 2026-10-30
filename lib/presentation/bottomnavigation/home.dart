@@ -68,12 +68,9 @@ class _HomeState extends State<Home> {
           SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsetsGeometry.only(left: myPadding / 1.5),
-              child: HomeListTile(
-                title: Appstring.categoriestitle,
-                onPressed: () {
-                  Navigator.pushNamed(context, AppRouter.category);
-                },
-              ),
+              child: HomeListTile(title: Appstring.categoriestitle, onPressed: (){
+                Navigator.pushNamed(context, AppRouter.category);
+              })
             ),
           ),
 
@@ -95,10 +92,7 @@ class _HomeState extends State<Home> {
           SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsetsGeometry.only(left: myPadding / 1.5),
-              child: HomeListTile(
-                title: Appstring.currentordertitle,
-                onPressed: () {},
-              ),
+              child: HomeListTile(title: Appstring.currentordertitle, onPressed: (){})
             ),
           ),
           SliverToBoxAdapter(
@@ -187,10 +181,7 @@ class _HomeState extends State<Home> {
           SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsetsGeometry.only(left: myPadding / 1.5),
-              child: HomeListTile(
-                title: Appstring.populardrinkstitle,
-                onPressed: () {},
-              ),
+              child: HomeListTile(title: Appstring.populardrinkstitle, onPressed: (){})
             ),
           ),
           SliverList(
@@ -213,11 +204,10 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
 class HomeListTile extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
-  const HomeListTile({super.key, required this.title, required this.onPressed});
+  const HomeListTile({super.key,required this.title,required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

@@ -379,10 +379,12 @@ class Menudata {
         .where((product) => product.categoryId == categoryId)
         .toList();
   }
-  static List<Categorychipmodel> get homecategories{
+
+  static List<Categorychipmodel> get homecategories {
     return categories.take(4).toList();
   }
-  static List<Populardrinkmodel> get popularproducts{
-    return product.take(4).toList();
+
+  static List<Populardrinkmodel> get popularproducts {
+    return product.take(3).toList();
   }
 }

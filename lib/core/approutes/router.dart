@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hollycoffee/presentation/bottomnavigation/home.dart';
-import 'package:hollycoffee/presentation/bottomnavigation/category.dart';
+import 'package:hollycoffee/presentation/bottomnavigation/menu.dart';
 import 'package:hollycoffee/presentation/bottomnavigation/homeroutes.dart';
 
 class AppRouter {
@@ -15,7 +15,7 @@ class AppRouter {
         case homeroutes:
         return MaterialPageRoute(builder: (_)=>Homeroutes());
         case category:
-        return MaterialPageRoute(builder: (_)=>Category());
+        return MaterialPageRoute(builder: (_)=>Menu());
         default: 
         return null;
     }

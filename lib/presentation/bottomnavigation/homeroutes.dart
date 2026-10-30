@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hollycoffee/presentation/bottomnavigation/category.dart';
 import 'package:hollycoffee/presentation/bottomnavigation/home.dart';
 import 'package:hollycoffee/presentation/bottomnavigation/bottomnavigation.dart';
-import 'package:hollycoffee/presentation/bottomnavigation/category.dart';
 import 'package:hollycoffee/presentation/bottomnavigation/gifts.dart';
 import 'package:hollycoffee/presentation/bottomnavigation/profile.dart';
 class Homeroutes extends StatefulWidget {
