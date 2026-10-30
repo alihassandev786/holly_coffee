@@ -1,0 +1,21 @@
+class Appstring {
+  Appstring._();
+  static const String location = "New York, USA";
+  static const String coffeequestion = "What Coffee do you like?";
+  static const String topratedtitle = "Top Rated Product !";
+  static const String featuredproduct = "Iced Heavenly Garamel.";
+  static const String tryit = "Try it";
+  static const String categoriestitle = "Categories";
+  static const String viewallbutton = "View All";
+  static const String matcha = "Matcha";
+  static const String hotcoffee = "Hot Coffee";
+  static const String coldbrews = "Cold Brews";
+  static const String refreshers = "Refreshers";
+  static const String currentordertitle = "Current Order";
+  static const String orderpreparingmessage = "Your order is preparing !";
+  static const String estimateddelivery = "EST Delivery";
+  static const String deliverytime = "25 - 30 mins";
+  static const String populardrinkstitle = "Popular Drinks";
+  static const String popularcoffeename = "Cold Brew of the Saints";
+  static const String populardrinksprice = "\$ 4.99";
+}
