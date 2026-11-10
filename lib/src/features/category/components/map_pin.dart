@@ -8,7 +8,6 @@ class MapPin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -46,7 +45,6 @@ class Pinavator extends StatelessWidget {
       color: AppColors.border,
       child: Icon(Icons.person, color: AppColors.textcolor2),
     );
-    final avatorsize =  myPadding * 2.2;
     return SizedBox(
       height: myPadding*2.2,
       width: myPadding*2.2,
