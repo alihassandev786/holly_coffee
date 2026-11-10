@@ -42,5 +42,8 @@ class Appstring {
   static const String editprofile = "Edit Profile";
   static const String carttitle = "Cart";
   static const String checkouttitle = "Checkout";
+    static const String order = "Orders";
+    static const String orderdetail = "Order Detail";
+
   
 }

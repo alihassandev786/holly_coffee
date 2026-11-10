@@ -12,6 +12,10 @@ class AddressCard extends StatelessWidget {
     const center = LatLng(30.1575, 71.5249);
     final theme = Theme.of(context);
     return Card(
+      shape: RoundedRectangleBorder(
+        side: BorderSide.none,
+        borderRadius: BorderRadius.circular(myPadding*.9)
+      ),
       elevation: 0,
       child: Padding(
         padding: EdgeInsets.all(myPadding / 1.2),
@@ -27,7 +31,7 @@ class AddressCard extends StatelessWidget {
                   child: FlutterMap(
                     options: MapOptions(
                       initialCenter: center,
-                      initialZoom: 17,
+                      initialZoom: 14,
                       minZoom: 4,
                       maxZoom: 24,
                     ),

@@ -3,6 +3,7 @@ class Appimages {
     static const String categorycard = "https://i.ibb.co/V0hYhWkD/Frame-18.png";
     static const String rewardbannerimage = "assets/images/reward.png";
         static const String imojibannerimage = "assets/images/imoji.png";
+        static const String profileimage = "https://i.ibb.co/X1rYST9/profileimage.png";
 
 
 }
