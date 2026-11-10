@@ -8,36 +8,62 @@ class MapPin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Card(
-          elevation: 2,
-          margin: EdgeInsets.zero,
+    return SizedBox(
+      width: myPadding*2.8,
+      height: myPadding*3.5,
+      child: CustomPaint(
+        painter: _PinPainter(
           color: AppColors.bgcolor,
-          shape: CircleBorder(),
+          shadowColor: AppColors.textcolor1,
+        ),
+        child: Align(
+          alignment: Alignment.topCenter,
           child: SizedBox(
-            height: myPadding * 2.6,
-            width: myPadding * 2.6,
+            width: myPadding*2.8,
+            height: myPadding*2.8,
             child: Center(child: child),
           ),
         ),
-        Transform.translate(
-          offset: Offset(0, -myPadding * .6),
-          child: Icon(
-            Icons.arrow_drop_down,
-            color: AppColors.bgcolor,
-            size: myPadding * 1.6,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
 
-class Pinavator extends StatelessWidget {
+
+class _PinPainter extends CustomPainter {
+  final Color color;
+  final Color shadowColor;
+  const _PinPainter({required this.color, required this.shadowColor});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final r = size.width / 2;
+
+    // gol hissa
+    final circle = Path()
+      ..addOval(Rect.fromCircle(center: Offset(r, r), radius: r));
+
+    final tail = Path()
+      ..moveTo(r - r * 0.64, r + r * 0.77)
+      ..lineTo(r, size.height)
+      ..lineTo(r + r * 0.64, r + r * 0.77)
+      ..close();
+
+    final pin = Path.combine(PathOperation.union, circle, tail);
+
+    canvas.drawShadow(pin, shadowColor, 4, true);
+    canvas.drawPath(pin, Paint()..color = color);
+  }
+
+  @override
+  bool shouldRepaint(covariant _PinPainter old) =>
+      old.color != color || old.shadowColor != shadowColor;
+}
+
+
+class Pinavatar extends StatelessWidget {
   final String? imageUrl;
-  const Pinavator({super.key, this.imageUrl});
+  const Pinavatar({super.key, this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +71,18 @@ class Pinavator extends StatelessWidget {
       color: AppColors.border,
       child: Icon(Icons.person, color: AppColors.textcolor2),
     );
-    return SizedBox(
-      height: myPadding*2.2,
-      width: myPadding*2.2,
-      child: imageUrl == null?fallback:Image.network(imageUrl!,fit: BoxFit.cover,errorBuilder: (_, __, ___) =>fallback,),
+    return ClipOval(
+      child: SizedBox(
+        height: myPadding*2.2,
+        width: myPadding*2.2,
+        child: imageUrl == null
+            ? fallback
+            : Image.network(
+                imageUrl!,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => fallback,
+              ),
+      ),
     );
   }
 }

@@ -63,86 +63,91 @@ class OrderMapView extends StatelessWidget {
       child: Icon(Icons.home_outlined, color: AppColors.primary),
     );
     final avatarPin = MapPin(
-      child: Pinavator(imageUrl: istracking ? courier?.imageUrl : userimageUrl),
+      child: Pinavatar(imageUrl: istracking ? courier?.imageUrl : userimageUrl),
     );
     final startPin = istracking ? avatarPin : homePin;
     final endPin = istracking ? homePin : avatarPin;
 
-    final map = FlutterMap(
-      options: MapOptions(
-        initialCameraFit: CameraFit.bounds(
-          bounds: LatLngBounds.fromPoints(route),
-          padding: EdgeInsets.all(myPadding * 3),
+    final map = ExcludeSemantics(
+      child: FlutterMap(
+        options: MapOptions(
+          initialCameraFit: CameraFit.bounds(
+            bounds: LatLngBounds.fromPoints(route),
+            padding: EdgeInsets.all(myPadding * 3),
+          ),
+          interactionOptions: const InteractionOptions(
+            flags:
+                InteractiveFlag.pinchZoom |
+                InteractiveFlag.pinchMove |
+                InteractiveFlag.doubleTapZoom,
+          ),
         ),
-        interactionOptions: const InteractionOptions(
-          flags: InteractiveFlag.pinchZoom | InteractiveFlag.doubleTapZoom,
-        ),
-      ),
-      children: [
-        TileLayer(
-          urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-          userAgentPackageName: 'com.example.hollycoffee', // <- apna package id
-        ),
-        PolylineLayer(
-          polylines: [
-            Polyline(
-              points: restPart,
-              strokeWidth: myPadding / 3,
-              color: AppColors.textcolor2.withAlpha(120),
-              strokeCap: StrokeCap.round,
-              strokeJoin: StrokeJoin.round,
-            ),
-            Polyline(
-              points: donePart,
-              strokeWidth: myPadding / 3,
-              color: AppColors.primary,
-              strokeCap: StrokeCap.round,
-              strokeJoin: StrokeJoin.round,
-            ),
-          ],
-        ),
-        MarkerLayer(
-          markers: [
-            // direction arrow
-            Marker(
-              point: route[splitIndex],
-              width: myPadding * 2,
-              height: myPadding * 2,
-              child: Transform.rotate(
-                angle: bearing * math.pi / 180,
-                child: Icon(
-                  Icons.navigation,
-                  color: AppColors.primary,
-                  size: myPadding * 1.6,
+        children: [
+          TileLayer(
+            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            userAgentPackageName: 'com.example.hollycoffee', // <- apna package id
+          ),
+          PolylineLayer(
+            polylines: [
+              Polyline(
+                points: restPart,
+                strokeWidth: myPadding / 3,
+                color: AppColors.textcolor2.withAlpha(120),
+                strokeCap: StrokeCap.round,
+                strokeJoin: StrokeJoin.round,
+              ),
+              Polyline(
+                points: donePart,
+                strokeWidth: myPadding / 3,
+                color: AppColors.primary,
+                strokeCap: StrokeCap.round,
+                strokeJoin: StrokeJoin.round,
+              ),
+            ],
+          ),
+          MarkerLayer(
+            markers: [
+              // direction arrow
+              Marker(
+                point: route[splitIndex],
+                width: myPadding * 2,
+                height: myPadding * 2,
+                child: Transform.rotate(
+                  angle: bearing * math.pi / 180,
+                  child: Icon(
+                    Icons.navigation,
+                    color: AppColors.primary,
+                    size: myPadding * 1.6,
+                  ),
                 ),
               ),
-            ),
-            // ETA bubble
-            Marker(
-              point: mid,
-              width: myPadding * 5.5,
-              height: myPadding * 2.2,
-              child: Etabubble(label: eatalable),
-            ),
-            Marker(
-              point: route.first,
-              width: myPadding*2.8,
-              height: myPadding*4.4,
-              alignment: Alignment.topCenter,
-              child: startPin,
-            ),
-            Marker(
-              point: route.last,
-              width: myPadding*2.8,
-              height: myPadding*4.4,
-              alignment: Alignment.topCenter,
-              child: endPin,
-            ),
-          ],
-        ),
-      ],
+              // ETA bubble
+              Marker(
+                point: mid,
+                width: myPadding * 5.5,
+                height: myPadding * 2.2,
+                child: Etabubble(label: eatalable),
+              ),
+              Marker(
+                point: route.first,
+                width: myPadding * 2.8,
+                height: myPadding * 3.5,
+                alignment: Alignment.topCenter,
+                child: startPin,
+              ),
+              Marker(
+                point: route.last,
+                width: myPadding * 2.8,
+                height: myPadding * 3.5,
+                alignment: Alignment.topCenter,
+                child: endPin,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
-     return Card(
+    return Card(
       elevation: 0,
       margin: EdgeInsets.zero,
       clipBehavior: Clip.antiAlias,
@@ -161,8 +166,12 @@ class OrderMapView extends StatelessWidget {
           if (istracking && courier != null) ...[
             Divider(height: 0, color: AppColors.border),
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: myPadding/1.5),
-              child: courierCard(courier: courier!, oncall: onCall, onchat: onChat),
+              padding: EdgeInsets.symmetric(horizontal: myPadding / 1.5),
+              child: courierCard(
+                courier: courier!,
+                oncall: onCall,
+                onchat: onChat,
+              ),
             ),
           ],
         ],
@@ -170,7 +179,6 @@ class OrderMapView extends StatelessWidget {
     );
   }
 }
-
 
 class Etabubble extends StatelessWidget {
   final String label;
