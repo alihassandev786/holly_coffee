@@ -19,12 +19,17 @@ class OrderDetailscreen extends StatefulWidget {
     name: "Alexender Philips",
     vehicle: "Motor bike",
   );
-
   @override
   State<OrderDetailscreen> createState() => _OrderDetailscreenState();
 }
-
 class _OrderDetailscreenState extends State<OrderDetailscreen> {
+  void gotocompleted(OrderModel order) {
+    if (!mounted) return;
+    Navigator.of(
+      context,
+    ).pushReplacementNamed("/ordercompleted", arguments: order);
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -63,8 +68,8 @@ class _OrderDetailscreenState extends State<OrderDetailscreen> {
             sliver: SliverToBoxAdapter(
               child: OrderStatusCard(
                 statustext: statustext,
-                progress: istracking ? 0.7 : 1.0,
                 estimatedtime: istracking ? "Est 2 mins" : null,
+                onfinished: () => gotocompleted(o),
               ),
             ),
           ),

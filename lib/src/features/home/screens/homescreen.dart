@@ -10,6 +10,7 @@ import 'package:hollycoffee/src/features/home/screens/menuscreen.dart';
 
 
 class Home extends StatefulWidget {
+  static const route = "/home";
   const Home({super.key});
 
   @override

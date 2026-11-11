@@ -44,6 +44,8 @@ class Appstring {
   static const String checkouttitle = "Checkout";
     static const String order = "Orders";
     static const String orderdetail = "Order Detail";
+        static const String orderdetails = "Order Details";
+
 
   
 }

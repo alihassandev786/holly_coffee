@@ -27,6 +27,9 @@ class OrderMapView extends StatelessWidget {
   final courierinfo? courier;
   final VoidCallback? onCall;
   final VoidCallback? onChat;
+  final double? height;
+  final bool showborder;
+  final double pinscale;
   const OrderMapView({
     super.key,
     required this.mode,
@@ -37,6 +40,9 @@ class OrderMapView extends StatelessWidget {
     this.courier,
     this.onCall,
     this.onChat,
+    this.height,
+    this.showborder = true,
+    this.pinscale = 1.0,
   });
 
   bool get istracking => mode == OrderMapmode.tracking;
@@ -60,10 +66,19 @@ class OrderMapView extends StatelessWidget {
     );
 
     final homePin = MapPin(
-      child: Icon(Icons.home_outlined, color: AppColors.primary),
+      scale: pinscale,
+      child: Icon(
+        Icons.home_outlined,
+        color: AppColors.primary,
+        size: myPadding * 2 * pinscale,
+      ),
     );
     final avatarPin = MapPin(
-      child: Pinavatar(imageUrl: istracking ? courier?.imageUrl : userimageUrl),
+      scale: pinscale,
+      child: Pinavatar(
+        scale: pinscale,
+        imageUrl: istracking ? courier?.imageUrl : userimageUrl,
+      ),
     );
     final startPin = istracking ? avatarPin : homePin;
     final endPin = istracking ? homePin : avatarPin;
@@ -85,7 +100,8 @@ class OrderMapView extends StatelessWidget {
         children: [
           TileLayer(
             urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            userAgentPackageName: 'com.example.hollycoffee', // <- apna package id
+            userAgentPackageName:
+                'com.example.hollycoffee', // <- apna package id
           ),
           PolylineLayer(
             polylines: [
@@ -110,8 +126,8 @@ class OrderMapView extends StatelessWidget {
               // direction arrow
               Marker(
                 point: route[splitIndex],
-                width: myPadding * 2,
-                height: myPadding * 2,
+                width: myPadding * 2 * pinscale,
+                height: myPadding * 2 * pinscale,
                 child: Transform.rotate(
                   angle: bearing * math.pi / 180,
                   child: Icon(
@@ -124,21 +140,22 @@ class OrderMapView extends StatelessWidget {
               // ETA bubble
               Marker(
                 point: mid,
-                width: myPadding * 5.5,
-                height: myPadding * 2.2,
+                width: myPadding * 4.5 * pinscale,
+                height: myPadding * 1.8 * pinscale,
+                alignment: Alignment.centerRight,
                 child: Etabubble(label: eatalable),
               ),
               Marker(
                 point: route.first,
-                width: myPadding * 2.8,
-                height: myPadding * 3.5,
+                width: MapPin.SizeOf(pinscale),
+                height: MapPin.heightof(pinscale),
                 alignment: Alignment.topCenter,
                 child: startPin,
               ),
               Marker(
                 point: route.last,
-                width: myPadding * 2.8,
-                height: myPadding * 3.5,
+                width: MapPin.SizeOf(pinscale),
+                height: MapPin.heightof(pinscale),
                 alignment: Alignment.topCenter,
                 child: endPin,
               ),
@@ -153,13 +170,15 @@ class OrderMapView extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       color: AppColors.bgcolor,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: AppColors.border),
+        side: showborder
+            ? BorderSide(color: AppColors.border)
+            : BorderSide.none,
         borderRadius: BorderRadius.circular(myPadding * 1),
       ),
       child: Column(
         children: [
           SizedBox(
-            height: istracking ? myPadding * 18 : myPadding * 20.5,
+            height: height ?? (istracking ? myPadding * 17 : myPadding * 22.5),
             width: double.infinity,
             child: map,
           ),
@@ -191,7 +210,16 @@ class Etabubble extends StatelessWidget {
       elevation: 0,
       margin: EdgeInsets.zero,
       color: AppColors.primary,
-      shape: const StadiumBorder(),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(myPadding * 1),
+          topRight: Radius.circular(myPadding * 1),
+
+          bottomLeft: Radius.circular(0),
+
+          bottomRight: Radius.circular(myPadding * 1),
+        ),
+      ),
       child: Center(
         child: Text(
           label,

@@ -5,12 +5,14 @@ import 'package:hollycoffee/config/apptheme/app_theme.dart';
 class OrderStatusCard extends StatelessWidget {
   final String statustext;
   final String? estimatedtime;
-  final double progress;
+  final Duration duration;
+  final VoidCallback? onfinished;
   const OrderStatusCard({
     super.key,
     required this.statustext,
+    this.onfinished,
     required this.estimatedtime,
-    required this.progress,
+     this.duration = const Duration(seconds: 10),
   });
 
   @override
@@ -59,11 +61,17 @@ class OrderStatusCard extends StatelessWidget {
             SizedBox(height: myPadding / 3),
             ClipRRect(
               borderRadius: BorderRadius.circular(myPadding / 1.2),
-              child: LinearProgressIndicator(
-                value: progress,
-                minHeight: myPadding / 3,
-                backgroundColor: AppColors.textcolor2.withAlpha(80),
-                valueColor: AlwaysStoppedAnimation(AppColors.primary),
+              child: TweenAnimationBuilder<double>(
+                tween: Tween(begin: 0.0,end: 1.0),
+                duration: duration,
+                curve: Curves.linear,
+                onEnd: onfinished,
+                builder:(_, value, __)=> LinearProgressIndicator(
+                  value: value,
+                  minHeight: myPadding / 3,
+                  backgroundColor: AppColors.textcolor2.withAlpha(80),
+                  valueColor: AlwaysStoppedAnimation(AppColors.primary),
+                ),
               ),
             ),
           ],

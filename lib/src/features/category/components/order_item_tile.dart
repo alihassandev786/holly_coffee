@@ -96,6 +96,8 @@ class SummaryTile extends StatelessWidget {
           style: theme.textTheme.titleLarge?.copyWith(
             color: istotal ? AppColors.primary : AppColors.textcolor1,
             fontSize: istotal ? myPadding * 1.4 : myPadding * 1.2,
+            fontWeight: istotal ? FontWeight.w600:FontWeight.w500
+
           ),
         ),
       ),

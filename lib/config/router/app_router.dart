@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hollycoffee/src/features/auth/screens/loginscreen.dart';
+import 'package:hollycoffee/src/features/auth/screens/otp_verifyscreen.dart';
 import 'package:hollycoffee/src/features/category/models/order_model.dart';
 import 'package:hollycoffee/src/features/category/screens/cartscreen.dart';
 import 'package:hollycoffee/src/features/category/screens/checkout_page.dart';
 import 'package:hollycoffee/src/features/category/screens/delivery_orderscreen.dart';
+import 'package:hollycoffee/src/features/category/screens/order_completed_detailscreen.dart';
 import 'package:hollycoffee/src/features/category/screens/order_detailscreen.dart';
 import 'package:hollycoffee/src/features/home/models/product_model.dart';
+import 'package:hollycoffee/src/features/home/screens/homescreen.dart';
 import 'package:hollycoffee/src/features/profile/screens/edit_profilescreen.dart';
 import 'package:hollycoffee/src/features/home/screens/home_routes.dart';
 import 'package:hollycoffee/src/features/home/screens/menuscreen.dart';
@@ -16,6 +20,16 @@ mixin AppRouter {
   static Route? router(RouteSettings settings) {
     switch (settings.name) {
       case "/":
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => Loginscreen(),
+        );
+        case OtpVerifyscreen.route:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => OtpVerifyscreen(),
+        );
+      case Home.route:
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => Homeroutes(),
@@ -57,6 +71,11 @@ mixin AppRouter {
       final order = settings.arguments as OrderModel;
       return MaterialPageRoute(
         builder: (_) => OrderDetailscreen(order: order),
+        settings: settings,
+      );
+      case OrderCompletedDetailscreen.route:
+      return MaterialPageRoute(
+        builder: (_) => OrderCompletedDetailscreen(),
         settings: settings,
       );
       default:

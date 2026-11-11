@@ -9,6 +9,10 @@ class OrderModel {
   final OrderStatus status;
   final String? estimatedtime;
   final String imageUrl;
+  final String? ordercode;
+  final DateTime? placedon;
+  final String? fromaddress;
+  final String? toaddress;
   OrderModel({
     required this.title,
     required this.id,
@@ -17,7 +21,11 @@ class OrderModel {
     required this.type,
     required this.status,
     required this.imageUrl,
-    this.estimatedtime
+    this.estimatedtime,
+    this.fromaddress,
+    this.ordercode,
+    this.placedon,
+    this.toaddress,
 
   });
 }

@@ -4,13 +4,17 @@ import 'package:hollycoffee/config/apptheme/app_theme.dart';
 
 class MapPin extends StatelessWidget {
   final Widget child;
-  const MapPin({super.key, required this.child});
+  final double scale;
+  const MapPin({super.key, required this.child, this.scale = 1.0});
+  static double SizeOf(double scale) => myPadding * 2.8 * scale;
+  static double heightof(double scale) => SizeOf(scale) * 1.25;
 
   @override
   Widget build(BuildContext context) {
+    final size = SizeOf(scale);
     return SizedBox(
-      width: myPadding*2.8,
-      height: myPadding*3.5,
+      width: size,
+      height: heightof(scale),
       child: CustomPaint(
         painter: _PinPainter(
           color: AppColors.bgcolor,
@@ -19,8 +23,8 @@ class MapPin extends StatelessWidget {
         child: Align(
           alignment: Alignment.topCenter,
           child: SizedBox(
-            width: myPadding*2.8,
-            height: myPadding*2.8,
+            width: size,
+            height: size,
             child: Center(child: child),
           ),
         ),
@@ -28,7 +32,6 @@ class MapPin extends StatelessWidget {
     );
   }
 }
-
 
 class _PinPainter extends CustomPainter {
   final Color color;
@@ -60,10 +63,10 @@ class _PinPainter extends CustomPainter {
       old.color != color || old.shadowColor != shadowColor;
 }
 
-
 class Pinavatar extends StatelessWidget {
   final String? imageUrl;
-  const Pinavatar({super.key, this.imageUrl});
+  final double scale;
+  const Pinavatar({super.key, this.imageUrl, this.scale = 1.0});
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +74,12 @@ class Pinavatar extends StatelessWidget {
       color: AppColors.border,
       child: Icon(Icons.person, color: AppColors.textcolor2),
     );
+    final avatarSize = MapPin.SizeOf(scale) - myPadding * .6 * scale;
+
     return ClipOval(
       child: SizedBox(
-        height: myPadding*2.2,
-        width: myPadding*2.2,
+        height: avatarSize,
+        width: avatarSize,
         child: imageUrl == null
             ? fallback
             : Image.network(
