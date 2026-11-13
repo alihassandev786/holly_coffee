@@ -134,7 +134,7 @@ class _DeliveryOrderscreenState extends State<DeliveryOrderscreen> {
                 itemCount: activeorders.length,
                 itemBuilder: (context, i) =>
                     ActiveorderCard(order: activeorders[i]),
-                separatorBuilder: (_, __) => SizedBox(height: myPadding * 1),
+                separatorBuilder: (_, _) => SizedBox(height: myPadding * 1),
               ),
             ),
           ],
@@ -155,7 +155,7 @@ class _DeliveryOrderscreenState extends State<DeliveryOrderscreen> {
                 itemCount: pastorders.length,
                 itemBuilder: (context, i) =>
                     PastOrderCard(order: pastorders[i]),
-                separatorBuilder: (_, __) => SizedBox(height: myPadding / 1.5),
+                separatorBuilder: (_, _) => SizedBox(height: myPadding / 1.5),
               ),
             ),
           ],

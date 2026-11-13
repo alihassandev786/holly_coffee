@@ -20,75 +20,78 @@ class Populardrinkcard extends StatelessWidget {
           arguments: Menudata.toProduct(categorycard),
         );
       },
-      child: Container(
+      child: SizedBox(
         height: myPadding * 8,
         width: double.infinity,
-        padding: EdgeInsets.symmetric(
-          horizontal: myPadding * .55,
-          vertical: myPadding * .55,
-        ),
-        decoration: BoxDecoration(
+
+        child: Card(
+          elevation: 0,
           color: theme.cardColor,
-          borderRadius: BorderRadius.circular(myPadding * 1.2),
-        ),
-        child: Stack(
-          children: [
-            Row(
+          shape: RoundedSuperellipseBorder(
+            borderRadius: BorderRadius.circular(myPadding * 1.2),
+          ),
+
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: myPadding * .55,
+              vertical: myPadding * .55,
+            ),
+            child: Stack(
               children: [
-                Hero(
-                  tag: productHeroTag(categorycard.id),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(myPadding * 1.2),
-                    child: SizedBox(
-                      height: double.infinity,
-                      width: myPadding * 7,
-                      child: Image.network(
-                        categorycard.image,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: myPadding * .6),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
                   children: [
-                    SizedBox(
-                      width: myPadding * 12,
-                      child: Text(
-                        maxLines: 3,
-                        categorycard.name,
-                        style: theme.textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          fontSize: myPadding * 1.05,
+                    Hero(
+                      tag: productHeroTag(categorycard.id),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(myPadding * 1.2),
+                        child: SizedBox(
+                          height: double.infinity,
+                          width: myPadding * 7,
+                          child: Image.network(
+                            categorycard.image,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
-                    Spacer(),
-                    Text(
-                      "\$ ${categorycard.price.toStringAsFixed(2)}",
-                      style: theme.textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                      maxLines: 2,
+                    SizedBox(width: myPadding * .6),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: myPadding * 12,
+                          child: Text(
+                            maxLines: 3,
+                            categorycard.name,
+                            style: theme.textTheme.bodyLarge?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              fontSize: myPadding * 1.05,
+                            ),
+                          ),
+                        ),
+                        Spacer(),
+                        Text(
+                          "\$ ${categorycard.price.toStringAsFixed(2)}",
+                          style: theme.textTheme.headlineSmall?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
+                          maxLines: 2,
+                        ),
+                      ],
                     ),
                   ],
                 ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: CircleAvatar(
+                    radius: myPadding*1.2,
+                    backgroundColor: AppColors.primary,
+                    child: Icon(Icons.add, color: AppColors.bgcolor),
+                  ),
+                ),
               ],
             ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Container(
-                height: myPadding * 2.8,
-                width: myPadding * 2.8,
-                decoration: BoxDecoration(
-                  color: AppColors.primary,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(Icons.add, color: AppColors.bgcolor),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

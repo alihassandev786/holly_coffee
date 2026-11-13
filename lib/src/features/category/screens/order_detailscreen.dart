@@ -134,13 +134,13 @@ class _OrderDetailscreenState extends State<OrderDetailscreen> {
               padding: EdgeInsets.symmetric(horizontal: myPadding / 1.5),
               sliver: SliverList.separated(
                 itemCount: o.itemscount,
-                itemBuilder: (_, __) => OrderItemTile(
+                itemBuilder: (_, _) => OrderItemTile(
                   imageUrl: o.imageUrl,
                   title: o.title,
                   subtitle: "Matcha . QTY : 1 item",
                   price: o.price,
                 ),
-                separatorBuilder: (_, __) => SizedBox(height: myPadding / 3),
+                separatorBuilder: (_, _) => SizedBox(height: myPadding / 3),
               ),
             ),
             SliverToBoxAdapter(child: SizedBox(height: myPadding / 3)),

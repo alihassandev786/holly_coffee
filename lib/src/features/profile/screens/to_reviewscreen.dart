@@ -116,7 +116,7 @@ class _ToreviewState extends State<Toreview> {
                   onSubmit: (rating, text) => submit(item, rating, text),
                 );
               },
-              separatorBuilder: (_, __) => SizedBox(height: myPadding / 1.5),
+              separatorBuilder: (_, _) => SizedBox(height: myPadding / 1.5),
             ),
           ),
           SliverToBoxAdapter(child: SizedBox(height: myPadding*2,),)

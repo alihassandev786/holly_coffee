@@ -219,7 +219,7 @@ class _WalletState extends State<Wallet> {
               itemCount: Transaction.length,
               itemBuilder: (context, i) =>
                   Transactiontile(item: Transaction[i]),
-              separatorBuilder: (_, __) => SizedBox(height: myPadding / 10),
+              separatorBuilder: (_, _) => SizedBox(height: myPadding / 10),
             ),
           ),
         ],

@@ -201,7 +201,7 @@ class OrderMapView extends StatelessWidget {
 
 class Etabubble extends StatelessWidget {
   final String label;
-  const Etabubble({required this.label});
+  const Etabubble({super.key, required this.label});
 
   @override
   Widget build(BuildContext context) {

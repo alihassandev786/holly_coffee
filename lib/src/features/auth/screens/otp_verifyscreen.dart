@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pinput/pinput.dart';
 import 'package:hollycoffee/config/apptheme/app_colors.dart';
 import 'package:hollycoffee/config/apptheme/app_theme.dart';
+import 'package:hollycoffee/src/features/auth/component/pinput_box.dart';
 
 class OtpVerifyscreen extends StatefulWidget {
   static const route = "/otpverify";
@@ -14,34 +14,17 @@ class OtpVerifyscreen extends StatefulWidget {
 }
 
 class _OtpVerifyscreenState extends State<OtpVerifyscreen> {
-  final _otpController = TextEditingController();
-
-  @override
-  void dispose() {
-    _otpController.dispose();
-    super.dispose();
-  }
+  String _otp = '';
 
   void _submit() {
-    if (_otpController.text.length < 4) return;
-    debugPrint(_otpController.text);
+    if (_otp.length < 4) return;
+    
   }
 
   @override
   Widget build(BuildContext context) {
-
     final theme = Theme.of(context);
     final text = theme.textTheme;
-
-    final defaultPinTheme = PinTheme(
-      width: myPadding * 3.4,
-      height: myPadding * 3.4,
-      textStyle: text.titleMedium,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(myPadding*1),
-        border: Border.all(color: AppColors.border),
-      ),
-    );
 
     return Scaffold(
       body: Material(
@@ -49,9 +32,10 @@ class _OtpVerifyscreenState extends State<OtpVerifyscreen> {
         child: CustomScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           slivers: [
-            SliverToBoxAdapter(child: SizedBox(height: myPadding * 11)),
-        
-            // Logo
+            SliverAppBar(),
+
+            SliverToBoxAdapter(child: SizedBox(height: myPadding * 4)),
+
             SliverToBoxAdapter(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -71,23 +55,26 @@ class _OtpVerifyscreenState extends State<OtpVerifyscreen> {
                 ],
               ),
             ),
-            SliverToBoxAdapter(child: SizedBox(height: myPadding * 5)),
-        
-            // Title
+            SliverToBoxAdapter(child: SizedBox(height: myPadding * 4.8)),
+
             SliverToBoxAdapter(
               child: Text(
                 "Verify Your Account",
-                style: text.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+                style: text.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
-            SliverToBoxAdapter(child: SizedBox(height: myPadding*1)),
-        
-            // Subtitle + phone
+            SliverToBoxAdapter(child: SizedBox(height: myPadding * 1.1)),
+
             SliverToBoxAdapter(
               child: Text(
                 "We have sent a 4 digit code to the number",
-                style: text.bodyLarge?.copyWith(color: AppColors.textcolor2),
+                style: text.bodyLarge?.copyWith(
+                  color: AppColors.textcolor2,
+                  fontWeight: FontWeight.w600,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -95,74 +82,66 @@ class _OtpVerifyscreenState extends State<OtpVerifyscreen> {
             SliverToBoxAdapter(
               child: Text(
                 widget.phone,
-                style: text.bodyLarge,
+                style: text.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
                 textAlign: TextAlign.center,
               ),
             ),
             SliverToBoxAdapter(child: SizedBox(height: myPadding * 1.5)),
-        
-            // OTP boxes
             SliverToBoxAdapter(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: myPadding*1),
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: Pinput(
-                    length: 4,
-                    controller: _otpController,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    keyboardType: TextInputType.number,
-                    defaultPinTheme: defaultPinTheme,
-                    focusedPinTheme: defaultPinTheme.copyWith(
-                      decoration: defaultPinTheme.decoration!.copyWith(
-                        border: Border.all(color: AppColors.primary),
-                      ),
-                    ),
-                    onCompleted: (_) => _submit(),
-                  ),
+                padding: EdgeInsets.symmetric(horizontal: myPadding * 1),
+                child: PinputBox(
+                  onChanged: (v) => _otp = v,
+                  onCompleted: (_) => _submit(),
                 ),
               ),
             ),
-            SliverToBoxAdapter(child: SizedBox(height: myPadding * 1.5)),
-        
-            // Resend
+
+            SliverToBoxAdapter(child: SizedBox(height: myPadding * 1)),
+
             SliverToBoxAdapter(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Didn't receive code ?",
-                    style: text.bodyLarge?.copyWith(color: AppColors.textcolor2),
+                    style: text.bodyLarge?.copyWith(
+                      color: AppColors.textcolor2,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   TextButton(
                     onPressed: () {},
                     child: Text(
                       "Resend",
-                      style: text.bodyLarge?.copyWith(color: AppColors.primary),
+                      style: text.bodyLarge?.copyWith(
+                        color: AppColors.primary,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
-        
-            // Submit button neeche
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(
-                    myPadding*1,
-                    myPadding*1,
-                    myPadding*1,
-                    myPadding * 1.5,
-                  ),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: myPadding * 3,
-                    child: ElevatedButton(
-                      onPressed: _submit,
-                      child: const Text("Submit"),
+            SliverToBoxAdapter(child: SizedBox(height: myPadding * 4.5)),
+
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: myPadding / 1.3),
+              sliver: SliverToBoxAdapter(
+                child: SizedBox(
+                  width: double.infinity,
+                  height: myPadding * 3,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed("/splash");
+                    },
+                    child: Text(
+                      "Submit",
+                      style: text.titleLarge?.copyWith(
+                        fontSize: myPadding * 1.3,
+                        color: AppColors.bgcolor,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),

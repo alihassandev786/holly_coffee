@@ -299,7 +299,7 @@ class _ProductdetailState extends State<Productdetail> {
                   opacity: _fade ?? kAlwaysCompleteAnimation,
                   sliver: SliverList.separated(
                     itemCount: product.addon.length,
-                    separatorBuilder: (_, __) =>
+                    separatorBuilder: (_, _) =>
                         SizedBox(height: myPadding / 1.5),
                     itemBuilder: (context, i) {
                       final addOn = product.addon[i];

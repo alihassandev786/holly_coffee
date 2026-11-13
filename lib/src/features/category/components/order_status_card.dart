@@ -66,7 +66,7 @@ class OrderStatusCard extends StatelessWidget {
                 duration: duration,
                 curve: Curves.linear,
                 onEnd: onfinished,
-                builder:(_, value, __)=> LinearProgressIndicator(
+                builder:(_, value, _)=> LinearProgressIndicator(
                   value: value,
                   minHeight: myPadding / 3,
                   backgroundColor: AppColors.textcolor2.withAlpha(80),

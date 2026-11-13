@@ -5,7 +5,7 @@ class AddremoveButton extends StatelessWidget {
   final IconData icon;
   final bool filled;
   final VoidCallback onTap;
-  const AddremoveButton({
+  const AddremoveButton({super.key, 
     required this.icon,
     required this.onTap,
     this.filled = false,

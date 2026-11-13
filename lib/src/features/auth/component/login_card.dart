@@ -6,7 +6,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/phone_number.dart';
 class Logincard extends StatelessWidget {
   OutlineInputBorder _border(Color color) => OutlineInputBorder(
-    borderRadius: BorderRadius.circular(myPadding * 1),
+    borderRadius: BorderRadius.circular(myPadding * .8),
     borderSide: BorderSide(color: color),
   );
 
@@ -30,8 +30,8 @@ class Logincard extends StatelessWidget {
     final text = theme.textTheme;
     return Card(
       color: AppColors.bgcolor,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(myPadding*1.7)),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
@@ -54,7 +54,9 @@ class Logincard extends StatelessWidget {
               IntlPhoneField(
                 initialCountryCode: "PK",
                 decoration: InputDecoration(
+                  fillColor: Colors.transparent,
                   hintText: "Phone Number",
+                  counterText: "",
                   hintStyle: TextStyle(color: AppColors.textcolor2),
                   border: _border(AppColors.border),
                   enabledBorder: _border(AppColors.border),
@@ -62,11 +64,21 @@ class Logincard extends StatelessWidget {
                   errorBorder: _border(Colors.red),
                   focusedErrorBorder: _border(Colors.red),
                 ),
+                
                 style: theme.textTheme.bodyLarge,
                 dropdownTextStyle: const TextStyle(fontSize: 0, height: 0),
                 dropdownIconPosition: IconPosition.trailing,
+                dropdownIcon: Icon(Icons.keyboard_arrow_down),
                 flagsButtonPadding: EdgeInsetsGeometry.only(
-                  left: myPadding / 1.5,
+                  left: myPadding / 2,
+                  
+                ),
+                dropdownDecoration: BoxDecoration(
+                  border: Border(
+                    right: BorderSide(
+                      color: AppColors.border,width: myPadding/12,
+                    )
+                  ),
                 ),
                 disableLengthCheck: false,
                 languageCode: "en",
@@ -80,6 +92,7 @@ class Logincard extends StatelessWidget {
                 ),
                 onChanged: onPhonechanged,
               ),
+              SizedBox(height: myPadding*1.4,),
               
               Row(
                 children: [
@@ -100,7 +113,7 @@ class Logincard extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: (){
-                    Navigator.of(context).pushReplacementNamed("/home");
+                    Navigator.of(context).pushNamed("/otpverify");
                   },
                   child: Text(
                     'Login',

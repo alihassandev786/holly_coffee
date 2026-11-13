@@ -25,8 +25,8 @@ class _TopratedbannerState extends State<Topratedbanner> {
             elevation: 0,
             child: Padding(
               padding: EdgeInsetsGeometry.symmetric(
-                horizontal: myPadding / 1.5,
-                vertical: myPadding / 1,
+                horizontal: myPadding / 1.2,
+                vertical: myPadding *1.3,
               ),
               child: Row(
                 children: [
@@ -42,7 +42,7 @@ class _TopratedbannerState extends State<Topratedbanner> {
                           fontFamily: GoogleFonts.annapurnaSil().fontFamily,
                         ),
                       ),
-                      SizedBox(height: myPadding / 2.5),
+                      SizedBox(height: myPadding / 2),
                       Text(
                         Appstring.featuredproduct,
                         style: theme.textTheme.titleLarge?.copyWith(
@@ -51,7 +51,7 @@ class _TopratedbannerState extends State<Topratedbanner> {
                           color: AppColors.bgcolor,
                         ),
                       ),
-                      SizedBox(height: myPadding - 16),
+                      SizedBox(height: myPadding*.2),
                       ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
@@ -81,10 +81,10 @@ class _TopratedbannerState extends State<Topratedbanner> {
         ),
         Positioned(
           right: myPadding - 30, // Right side
-          top: myPadding * 4.7, // Top se 10 pixels
+          top: myPadding * 5.2, // Top se 10 pixels
           child: Container(
-            height: myPadding * 5,
-            width: myPadding * 10.5,
+            height: myPadding * 6,
+            width: myPadding * 11,
             decoration: ShapeDecoration(
               color: Color(0xffFFFFFF).withAlpha(100),
               shape: OvalBorder(),
@@ -93,11 +93,11 @@ class _TopratedbannerState extends State<Topratedbanner> {
         ),
         Positioned(
           left: myPadding * 12.8,
-          bottom: myPadding * 0,
+          bottom: myPadding - 20,
           child: Image(
             image: AssetImage("assets/images/home1.png"),
-            height: myPadding * 11,
-            width: myPadding * 13.5,
+            height: myPadding * 12,
+            width: myPadding * 14,
           ),
         ),
       ],

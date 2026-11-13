@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hollycoffee/src/features/auth/screens/loginscreen.dart';
 import 'package:hollycoffee/src/features/auth/screens/otp_verifyscreen.dart';
+import 'package:hollycoffee/src/features/auth/screens/splashscreen.dart';
 import 'package:hollycoffee/src/features/category/models/order_model.dart';
 import 'package:hollycoffee/src/features/category/screens/cartscreen.dart';
 import 'package:hollycoffee/src/features/category/screens/checkout_page.dart';
@@ -76,6 +77,11 @@ mixin AppRouter {
       case OrderCompletedDetailscreen.route:
       return MaterialPageRoute(
         builder: (_) => OrderCompletedDetailscreen(),
+        settings: settings,
+      );
+       case Splashscreen.route:
+      return MaterialPageRoute(
+        builder: (_) => Splashscreen(),
         settings: settings,
       );
       default:

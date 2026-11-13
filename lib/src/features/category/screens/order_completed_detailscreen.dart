@@ -155,13 +155,13 @@ class _OrderCompletedDetailscreenState
             padding: EdgeInsets.symmetric(horizontal: myPadding / 1.5),
             sliver: SliverList.separated(
               itemCount: o.itemscount,
-              itemBuilder: (_, __) => OrderItemTile(
+              itemBuilder: (_, _) => OrderItemTile(
                 imageUrl: o.imageUrl,
                 price: o.price,
                 subtitle: "Matcha . QTY : 1 item",
                 title: o.title,
               ),
-              separatorBuilder: (_, __) => SizedBox(height: myPadding / 3),
+              separatorBuilder: (_, _) => SizedBox(height: myPadding / 3),
             ),
           ),
           SliverToBoxAdapter(child: SizedBox(height: myPadding / 2)),

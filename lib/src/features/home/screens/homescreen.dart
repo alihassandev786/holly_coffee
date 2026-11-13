@@ -3,6 +3,7 @@ import 'package:hollycoffee/config/apptheme/app_colors.dart';
 import 'package:hollycoffee/config/apptheme/app_theme.dart';
 import 'package:hollycoffee/config/constants/app_string.dart';
 import 'package:hollycoffee/src/features/home/components/category_chip.dart';
+import 'package:hollycoffee/src/features/home/components/location_sheet.dart';
 import 'package:hollycoffee/src/features/home/components/popular_drink_card.dart';
 import 'package:hollycoffee/src/features/home/components/top_rated_banner.dart';
 import 'package:hollycoffee/src/features/home/data/menu_data.dart';
@@ -18,6 +19,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Locationresult? location;
+
+@override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_)=>asklocation());
+  }
+   Future <void> asklocation () async{
+  final Result = await LocationSheet.show(context);
+  if(Result != null && mounted){
+    setState(() => location = Result);
+
+  }
+}
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -25,6 +41,7 @@ class _HomeState extends State<Home> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             floating: true,
             expandedHeight: myPadding * 4,
             titleSpacing: myPadding / 2.2,
@@ -59,8 +76,8 @@ class _HomeState extends State<Home> {
             actionsPadding: EdgeInsets.only(right: myPadding / 1.5),
             actions: [
               CircleAvatar(
-                child: Icon(Icons.person),
                 backgroundColor: theme.colorScheme.surface,
+                child: Icon(Icons.person),
               ),
             ],
           ),

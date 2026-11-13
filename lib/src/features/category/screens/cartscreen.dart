@@ -134,7 +134,7 @@ class _CartState extends State<Cart> {
                         onIncrease: () => increase(item),
                       );
                     },
-                    separatorBuilder: (_, __) =>
+                    separatorBuilder: (_, _) =>
                         SizedBox(height: myPadding / 1.5),
                   ),
                 ),

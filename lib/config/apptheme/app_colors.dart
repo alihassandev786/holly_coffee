@@ -17,4 +17,5 @@ class AppColors {
   static const Color border = Color(0xFFD0CEC9);
   static const Color error = Colors.red;
   static const Color success = Color(0xff148949);
+  static const Color circlecolor = Color(0xff644832);
 }

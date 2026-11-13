@@ -5,7 +5,7 @@ import 'package:hollycoffee/src/features/home/models/product_model.dart';
 class SizeCard extends StatelessWidget {
   final ProductSize size;
   final bool selected;
-  const SizeCard({required this.size, required this.selected});
+  const SizeCard({super.key, required this.size, required this.selected});
 
   @override
   Widget build(BuildContext context) {
