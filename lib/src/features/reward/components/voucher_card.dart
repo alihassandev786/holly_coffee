@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hollycoffee/config/apptheme/app_colors.dart';
 import 'package:hollycoffee/config/apptheme/app_theme.dart';
-import 'package:hollycoffee/config/constants/app_string.dart';
+import 'package:hollycoffee/src/constants/app_string.dart';
 import 'package:hollycoffee/src/features/reward/models/voucher_model.dart';
 
 class Vouchercard extends StatelessWidget {

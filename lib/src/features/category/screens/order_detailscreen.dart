@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hollycoffee/config/apptheme/app_colors.dart';
 import 'package:hollycoffee/config/apptheme/app_theme.dart';
-import 'package:hollycoffee/config/constants/app_images.dart';
-import 'package:hollycoffee/config/constants/app_string.dart';
+import 'package:hollycoffee/src/constants/app_images.dart';
+import 'package:hollycoffee/src/constants/app_string.dart';
 import 'package:hollycoffee/src/features/category/components/courior_card.dart';
 import 'package:hollycoffee/src/features/category/components/order_item_tile.dart';
 import 'package:hollycoffee/src/features/category/components/order_map_view.dart';

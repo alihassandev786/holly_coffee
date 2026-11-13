@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hollycoffee/config/constants/app_images.dart';
+import 'package:hollycoffee/src/constants/app_images.dart';
 import 'package:hollycoffee/src/features/home/models/popular_drink_model.dart';
 import 'package:hollycoffee/src/features/home/models/category_chip_model.dart';
 import 'package:hollycoffee/src/features/home/models/product_model.dart';

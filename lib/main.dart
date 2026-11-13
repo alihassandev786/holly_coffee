@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hollycoffee/config/apptheme/app_theme.dart';
 import 'package:hollycoffee/config/router/app_router.dart';
-import 'package:hollycoffee/config/utils/shared_pref.dart';
+import 'package:hollycoffee/src/utils/shared_pref.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();

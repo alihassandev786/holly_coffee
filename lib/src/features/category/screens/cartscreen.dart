@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hollycoffee/config/apptheme/app_colors.dart';
 import 'package:hollycoffee/config/apptheme/app_theme.dart';
-import 'package:hollycoffee/config/constants/app_images.dart';
-import 'package:hollycoffee/config/constants/app_string.dart';
+import 'package:hollycoffee/src/constants/app_images.dart';
+import 'package:hollycoffee/src/constants/app_string.dart';
 import 'package:hollycoffee/src/features/category/components/cart_card.dart';
 import 'package:hollycoffee/src/features/category/models/cart_model.dart';
 

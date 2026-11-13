@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hollycoffee/config/apptheme/app_colors.dart';
 import 'package:hollycoffee/config/apptheme/app_theme.dart';
-import 'package:hollycoffee/config/constants/app_string.dart';
+import 'package:hollycoffee/src/constants/app_string.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class Profile extends StatefulWidget {
@@ -25,10 +25,7 @@ class _ProfileState extends State<Profile> {
             backgroundColor: Colors.transparent,
             surfaceTintColor: Colors.transparent,
             titleSpacing: myPadding / 1.5,
-            title: Text(
-              Appstring.profile,
-              
-            ),
+            title: Text(Appstring.profile),
           ),
           SliverToBoxAdapter(
             child: Stack(
@@ -48,18 +45,21 @@ class _ProfileState extends State<Profile> {
                     onTap: () {
                       Navigator.of(context).pushNamed("/editprofile");
                     },
-                    child: Container(
+                    child: SizedBox(
                       height: myPadding * 2.5,
                       width: myPadding * 2.5,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: theme.primaryColor,
-                        border: Border.all(
-                          width: myPadding / 7,
-                          color: AppColors.bgcolor,
+                      child: Card(
+                        shape: RoundedSuperellipseBorder(
+                          borderRadius: BorderRadius.circular(myPadding * 2),
+                          side: BorderSide(
+                            width: myPadding / 7,
+                            color: AppColors.bgcolor,
+                          ),
                         ),
+                        color: theme.primaryColor,
+
+                        child: Icon(Icons.edit, color: AppColors.bgcolor),
                       ),
-                      child: Icon(Icons.edit, color: AppColors.bgcolor),
                     ),
                   ),
                 ),
@@ -72,7 +72,7 @@ class _ProfileState extends State<Profile> {
               Appstring.profilename,
               style: theme.textTheme.titleLarge?.copyWith(
                 fontSize: myPadding * 1.23,
-                fontWeight: FontWeight.w600
+                fontWeight: FontWeight.w600,
               ),
               textAlign: TextAlign.center,
             ),
@@ -195,13 +195,18 @@ class Tile extends StatelessWidget {
         onTap: ontap,
         child: ListTile(
           contentPadding: EdgeInsets.zero,
-          leading: Container(
-            padding: EdgeInsets.all(myPadding / 1.5),
-            decoration: BoxDecoration(
-              color: theme.cardColor,
-              shape: BoxShape.circle,
+          leading: Card(
+            elevation: 0,
+            color: theme.cardColor,
+            shape: RoundedSuperellipseBorder(
+              borderRadius: BorderRadius.circular(myPadding * 3),
             ),
-            child: Icon(icon),
+
+            child: Padding(
+              padding: EdgeInsets.all(myPadding / 1.5),
+
+              child: Icon(icon),
+            ),
           ),
           title: Text(
             title,
@@ -225,9 +230,7 @@ class Sectiontitle extends StatelessWidget {
     final theme = Theme.of(context);
     return Text(
       title,
-      style: theme.textTheme.titleLarge?.copyWith(
-        fontWeight: FontWeight.w600
-      )
+      style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
     );
   }
 }

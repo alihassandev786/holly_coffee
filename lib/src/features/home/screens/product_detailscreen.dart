@@ -98,31 +98,35 @@ class _ProductdetailState extends State<Productdetail> {
                       Positioned(
                         left: myPadding * 1,
                         bottom: myPadding * 2.5,
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: myPadding * .8,
-                            vertical: myPadding / 2.8,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.bgcolor,
+                        child: Card(
+                          color: AppColors.bgcolor,
+
+                          shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(myPadding * 2),
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.star_rounded,
-                                color: AppColors.primary,
-                                size: 20,
-                              ),
-                              SizedBox(width: myPadding / 3),
-                              Text(
-                                product.rating.toString(),
-                                style: theme.textTheme.titleMedium?.copyWith(
-                                  fontWeight: FontWeight.w600,
+
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: myPadding * .8,
+                              vertical: myPadding / 2.8,
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(
+                                  Icons.star_rounded,
+                                  color: AppColors.primary,
+                                  size: 20,
                                 ),
-                              ),
-                            ],
+                                SizedBox(width: myPadding / 3),
+                                Text(
+                                  product.rating.toString(),
+                                  style: theme.textTheme.titleMedium?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -131,21 +135,31 @@ class _ProductdetailState extends State<Productdetail> {
                 ),
                 bottom: PreferredSize(
                   preferredSize: Size.fromHeight(myPadding * 1.5),
-                  child: Container(
+                  child: SizedBox(
                     height: myPadding * 1.5,
-                    decoration: BoxDecoration(
+
+                    child: Card(
+                      elevation: 0,
                       color: AppColors.bgcolor,
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(myPadding * 2),
+
+                      shape: RoundedSuperellipseBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(myPadding * 2),
+                        ),
                       ),
-                    ),
-                    child: Center(
-                      child: Container(
-                        width: myPadding * 6,
-                        height: myPadding / 4,
-                        decoration: BoxDecoration(
-                          color: AppColors.textcolor2,
-                          borderRadius: BorderRadius.circular(10),
+
+                      child: Center(
+                        child: SizedBox(
+                          width: myPadding * 6,
+                          height: myPadding / 4,
+                          child: Card(
+                            elevation: 0,
+                            color: AppColors.textcolor2.withAlpha(80),
+
+                            shape: RoundedSuperellipseBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -318,9 +332,7 @@ class _ProductdetailState extends State<Productdetail> {
                 ),
               ),
 
-              SliverToBoxAdapter(
-                child: SizedBox(height: myPadding * 9),
-              ),
+              SliverToBoxAdapter(child: SizedBox(height: myPadding * 9)),
             ],
           ),
 
@@ -333,7 +345,7 @@ class _ProductdetailState extends State<Productdetail> {
                 left: myPadding / 1.5,
                 right: myPadding / 1.5,
                 top: myPadding / 1.5,
-                bottom: myPadding *2.5,
+                bottom: myPadding * 2.5,
               ),
               decoration: BoxDecoration(
                 color: AppColors.bgcolor,
@@ -371,7 +383,7 @@ class _ProductdetailState extends State<Productdetail> {
                     height: myPadding * 3,
                     width: myPadding * 14,
                     child: ElevatedButton.icon(
-                      onPressed: (){},
+                      onPressed: () {},
                       label: Text(
                         "Add to Bag",
                         style: theme.textTheme.titleMedium?.copyWith(

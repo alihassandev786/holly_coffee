@@ -18,4 +18,5 @@ class AppColors {
   static const Color error = Colors.red;
   static const Color success = Color(0xff148949);
   static const Color circlecolor = Color(0xff644832);
+  static const Color clipoval = Color(0xffFFFFFF);
 }

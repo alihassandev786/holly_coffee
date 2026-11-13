@@ -22,17 +22,17 @@ class Bottomnavigationwidget extends StatelessWidget {
           label: '',
           icon: navIcon(0, Iconsax.home_1, Iconsax.home_copy),
         ),
-    
+
         BottomNavigationBarItem(
           label: '',
           icon: navIcon(1, Iconsax.category, Iconsax.category_copy),
         ),
-    
+
         BottomNavigationBarItem(
           label: '',
           icon: navIcon(2, Iconsax.gift, Iconsax.gift_copy),
         ),
-    
+
         BottomNavigationBarItem(
           label: '',
           icon: navIcon(3, Icons.person_rounded, Icons.person_outline_rounded),
@@ -45,7 +45,7 @@ class Bottomnavigationwidget extends StatelessWidget {
     final isSelected = selectedIndex == index;
 
     return Padding(
-      padding:  EdgeInsets.only(top: myPadding/1,bottom: myPadding/2),
+      padding: EdgeInsets.only(top: myPadding / 1, bottom: myPadding / 2),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -55,12 +55,14 @@ class Bottomnavigationwidget extends StatelessWidget {
             color: isSelected ? AppColors.primary : AppColors.border,
           ),
           SizedBox(height: myPadding / 5),
-          Container(
+          SizedBox(
             height: myPadding / 2.2,
             width: myPadding / 2.2,
-            decoration: BoxDecoration(
+            child: Card(
               color: isSelected ? AppColors.primary : Colors.transparent,
-              shape: BoxShape.circle,
+              shape: RoundedSuperellipseBorder(
+                borderRadius: BorderRadius.circular(myPadding*2)
+              ),
             ),
           ),
         ],

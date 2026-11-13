@@ -96,25 +96,31 @@ class _SplashscreenState extends State<Splashscreen> {
                         SizedBox(height: myPadding / 1.2),
                         Row(
                           children: [
-                            Container(
+                            SizedBox(
                               width: myPadding * 3.5,
                               height: myPadding / 1.6,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                  myPadding * 1,
+
+                              child: Card(
+                                color: AppColors.bgcolor,
+
+                                shape: RoundedSuperellipseBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    myPadding * 1,
+                                  ),
                                 ),
                               ),
                             ),
                             ...List.generate(
                               3,
-                              (_) => Container(
-                                margin: EdgeInsets.only(left: myPadding / 3),
-                                width: myPadding / 1.6,
+                              (_) => SizedBox(
+                                width: myPadding / 1,
                                 height: myPadding / 1.6,
-                                decoration: const BoxDecoration(
+                                child: Card(
                                   color: Colors.white54,
-                                  shape: BoxShape.circle,
+                                  shape: RoundedSuperellipseBorder(
+                                    borderRadius: BorderRadius.circular(myPadding*3)
+                                  ),
+                                  margin: EdgeInsets.only(left: myPadding / 3),
                                 ),
                               ),
                             ),
@@ -132,11 +138,11 @@ class _SplashscreenState extends State<Splashscreen> {
                   ),
                   sliver: SliverToBoxAdapter(
                     child: Slidebutton(
-                      iconcolor: AppColors.textcolor1,
-                      onComplete: () {
+                      title: "Next",
+                      ontap: () {
                         Navigator.of(context).pushReplacementNamed("/home");
                       },
-                      lable: "Next",
+                      color: AppColors.textcolor1,
                     ),
                   ),
                 ),

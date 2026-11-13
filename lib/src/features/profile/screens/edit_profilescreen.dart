@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hollycoffee/config/apptheme/app_colors.dart';
 import 'package:hollycoffee/config/apptheme/app_theme.dart';
-import 'package:hollycoffee/config/constants/app_string.dart';
+import 'package:hollycoffee/src/constants/app_string.dart';
 
 class Editprofile extends StatefulWidget {
   const Editprofile({super.key});
@@ -64,10 +64,7 @@ class _EditprofileState extends State<Editprofile> {
             backgroundColor: Colors.transparent,
             surfaceTintColor: Colors.transparent,
             titleSpacing: myPadding / 10,
-            title: Text(
-              Appstring.editprofile,
-              
-            ),
+            title: Text(Appstring.editprofile),
           ),
           SliverToBoxAdapter(
             child: Stack(
@@ -83,18 +80,24 @@ class _EditprofileState extends State<Editprofile> {
                 Positioned(
                   top: myPadding * 4.5,
                   left: myPadding * 14,
-                  child: Container(
+                  child: SizedBox(
                     height: myPadding * 2.5,
                     width: myPadding * 2.5,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+                    child: Card(
+                      shape: RoundedSuperellipseBorder(
+                        borderRadius: BorderRadius.circular(myPadding * 2),
+                        side: BorderSide(
+                          width: myPadding / 7,
+                          color: AppColors.bgcolor,
+                        ),
+                      ),
                       color: theme.primaryColor,
-                      border: Border.all(
-                        width: myPadding / 7,
+
+                      child: Icon(
+                        Icons.camera_alt_outlined,
                         color: AppColors.bgcolor,
                       ),
                     ),
-                    child: Icon(Icons.camera_alt_outlined, color: AppColors.bgcolor),
                   ),
                 ),
               ],
@@ -117,7 +120,9 @@ class _EditprofileState extends State<Editprofile> {
                   Sectiontitle(title: "Phone"),
                   SizedBox(height: myPadding / 1.5),
                   TextField(
-                    decoration: InputDecoration(hintText: "wilie.jennings@example.com"),
+                    decoration: InputDecoration(
+                      hintText: "wilie.jennings@example.com",
+                    ),
                   ),
                   SizedBox(height: myPadding / 1),
                   Sectiontitle(title: "Email"),
@@ -133,8 +138,7 @@ class _EditprofileState extends State<Editprofile> {
                   TextField(
                     controller: genderController,
                     readOnly: true,
-                    
-                    
+
                     decoration: InputDecoration(
                       hintText: "Male",
                       suffixIcon: PopupMenuButton<String>(
@@ -169,31 +173,43 @@ class _EditprofileState extends State<Editprofile> {
               ),
             ),
           ),
-          
-            SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: myPadding/1.5,vertical: myPadding*1.5),
-                      child: Column(
-                        children: [
-                          Spacer(),
-                          SizedBox(
-                            height: myPadding*3.2,
-                            width: double.infinity,
-                            child: ElevatedButton(onPressed: (){
-                              Navigator.of(context).pushNamedAndRemoveUntil("/", (route)=>false);
-                            },style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.symmetric()
-                            ), child: Text("Save",style: theme.textTheme.titleMedium?.copyWith(
-                              fontSize: myPadding*1.2,
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.bgcolor
-                            ),)),
-                          ),
-                        ],
+
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: myPadding / 1.5,
+                vertical: myPadding * 1.5,
+              ),
+              child: Column(
+                children: [
+                  Spacer(),
+                  SizedBox(
+                    height: myPadding * 3.2,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(
+                          context,
+                        ).pushNamedAndRemoveUntil("/", (route) => false);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(),
+                      ),
+                      child: Text(
+                        "Save",
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontSize: myPadding * 1.2,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.bgcolor,
+                        ),
                       ),
                     ),
                   ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

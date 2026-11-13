@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hollycoffee/config/apptheme/app_colors.dart';
 import 'package:hollycoffee/config/apptheme/app_theme.dart';
-import 'package:hollycoffee/config/constants/app_string.dart';
+import 'package:hollycoffee/src/constants/app_string.dart';
 
 class Topratedbanner extends StatefulWidget {
   const Topratedbanner({super.key});
@@ -26,7 +26,7 @@ class _TopratedbannerState extends State<Topratedbanner> {
             child: Padding(
               padding: EdgeInsetsGeometry.symmetric(
                 horizontal: myPadding / 1.2,
-                vertical: myPadding *1.3,
+                vertical: myPadding * 1.3,
               ),
               child: Row(
                 children: [
@@ -51,12 +51,12 @@ class _TopratedbannerState extends State<Topratedbanner> {
                           color: AppColors.bgcolor,
                         ),
                       ),
-                      SizedBox(height: myPadding*.2),
+                      SizedBox(height: myPadding * .2),
                       ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           shape: RoundedSuperellipseBorder(
-                            borderRadius: BorderRadius.circular(myPadding/2)
+                            borderRadius: BorderRadius.circular(myPadding / 2),
                           ),
                           backgroundColor: AppColors.bgcolor,
                           padding: EdgeInsets.symmetric(
@@ -80,13 +80,14 @@ class _TopratedbannerState extends State<Topratedbanner> {
           ),
         ),
         Positioned(
-          right: myPadding - 30, // Right side
-          top: myPadding * 5.2, // Top se 10 pixels
-          child: Container(
+          right: myPadding - 30,
+          top: myPadding * 5.2,
+          child: SizedBox(
             height: myPadding * 6,
             width: myPadding * 11,
-            decoration: ShapeDecoration(
-              color: Color(0xffFFFFFF).withAlpha(100),
+            child: Card(
+              elevation: 0,
+              color: AppColors.clipoval.withAlpha(100),
               shape: OvalBorder(),
             ),
           ),

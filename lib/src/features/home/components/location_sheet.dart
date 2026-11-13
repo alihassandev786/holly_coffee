@@ -43,7 +43,8 @@ class _LocationSheetState extends State<LocationSheet> {
         child: Card(
           elevation: 0,
           color: AppColors.border,
-          shape: RoundedRectangleBorder(),
+          shape: RoundedRectangleBorder(
+          ),
         ),
       ),
       SizedBox(width: myPadding / 2),
@@ -62,7 +63,7 @@ class _LocationSheetState extends State<LocationSheet> {
         color: AppColors.border.withAlpha(90),
         shape: RoundedRectangleBorder(
           side: BorderSide.none,
-          borderRadius: BorderRadius.circular(myPadding * .9),
+          borderRadius: BorderRadius.circular(myPadding * .7),
         ),
         elevation: 0,
         child: DropdownButtonFormField<String>(
@@ -157,13 +158,9 @@ class _LocationSheetState extends State<LocationSheet> {
                   onChanged: (v) => setState(() => state = v),
                 ),
                 SizedBox(height: myPadding * 2),
-                Slidebutton(
-                  onComplete: () {
-                    Navigator.of(context).pop();
-                  },
-                  lable: "Select",
-                  iconcolor: AppColors.primary,
-                ),
+                Slidebutton(title: "Select", ontap: (){
+                  Navigator.of(context).pop();
+                }, color: AppColors.primary)
               ],
             ),
           ),

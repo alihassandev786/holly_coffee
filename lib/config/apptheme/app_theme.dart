@@ -54,6 +54,7 @@ final baseTexttheme = ThemeData().textTheme;
         elevation: 20,
         shadowColor: AppColors.textcolor1,
         surfaceTintColor: Colors.transparent,
+        clipBehavior: .hardEdge,
         margin: EdgeInsets.zero,
         shape: RoundedSuperellipseBorder(
           borderRadius: BorderRadiusGeometry.circular(myPadding * 1),

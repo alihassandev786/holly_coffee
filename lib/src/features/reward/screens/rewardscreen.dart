@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hollycoffee/config/apptheme/app_colors.dart';
 import 'package:hollycoffee/config/apptheme/app_theme.dart';
-import 'package:hollycoffee/config/constants/app_string.dart';
+import 'package:hollycoffee/src/constants/app_string.dart';
 import 'package:hollycoffee/src/features/reward/data/voucher_data.dart';
 import 'package:hollycoffee/src/features/reward/components/reward_chip.dart';
 import 'package:hollycoffee/src/features/reward/components/reward_point_card.dart';
